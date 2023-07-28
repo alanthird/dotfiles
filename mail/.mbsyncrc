@@ -1,0 +1,58 @@
+Create Both
+Expunge Both
+
+IMAPAccount      Soverin
+Host             imap.soverin.net
+User             alan@idiocy.org
+PassCMD          "bw get password soverin.net"
+SSLType          IMAPS
+
+IMAPStore  Soverin-remote
+Account    Soverin
+
+MaildirStore Soverin-local
+SubFolders Verbatim
+Path ~/.local/share/Maildir/
+Inbox ~/.local/share/Maildir/inbox
+
+Channel Soverin-inbox
+Master   :Soverin-remote:
+Slave  :Soverin-local:inbox
+
+Channel Soverin-sent
+Master   :Soverin-remote:"Sent"
+Slave  :Soverin-local:sent
+
+Channel Soverin-trash
+Master   :Soverin-remote:"Trash"
+Slave  :Soverin-local:bin
+
+Channel Soverin-drafts
+Master   :Soverin-remote:"Drafts"
+Slave  :Soverin-local:drafts
+
+Channel Soverin-spam
+Master   :Soverin-remote:"Spam"
+Slave  :Soverin-local:spam
+
+Channel Soverin-archive
+Master   :Soverin-remote:"Archive"
+Slave  :Soverin-local:archive
+
+Group Soverin
+Channel Soverin-inbox
+Channel Soverin-sent
+Channel Soverin-trash
+Channel Soverin-drafts
+Channel Soverin-spam
+Channel Soverin-archive
+
+# Mailing Lists
+
+Channel lists
+Master    :Soverin-remote:
+Slave   :Soverin-local:
+Patterns "Lists/*"
+
+Group lists
+Channel lists

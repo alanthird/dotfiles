@@ -1,0 +1,6 @@
+text/html; firefox --new-window %s; nametemplate=%s.html ; needsterminal
+application/pdf; brave-browser --new-window %s ; needsterminal
+text/x-org; emacsclient -t %s; nametemplate=%s.org
+text/*; emacsclient -t %s
+application/*; xdg-open %s
+image/*; qimgv %s ; needsterminal

@@ -1,0 +1,99 @@
+set from     = 'alan@idiocy.org'
+set realname = 'Alan Third'
+
+alternates ^.+@idiocy.org$ ^athird@g(oogle)?mail.com$ ^alan.third@argyll-bute.gov.uk$ ^athird@mailfence.com$
+
+
+# Mailing Lists
+lists -group emacs-devel emacs-devel@gnu.org
+lists -group emacs-bugs [0-9]+.*@debbugs.gnu.org bug-gnu-emacs@gnu.org help-debbugs@gnu.org
+lists -group emacs-tangents emacs-tangents@gnu.org
+
+
+# set my_user = "`lpass show -u soverin.net`"
+# set my_pass = "`lpass show -p soverin.net`"
+
+set ssl_force_tls = yes
+set ssl_starttls = yes
+
+# IMAP
+set imap_user  = $my_user
+set imap_pass  = $my_pass
+set imap_idle  = yes
+
+
+
+# Local mailing list archives
+set mbox_type = Maildir
+
+set folder     = "~/.local/share/Maildir"
+set spoolfile  = "+inbox"
+set postponed  = "=drafts"
+set record     = "=sent"
+set trash      = "=bin"
+
+mailboxes -label 'Inbox'                  '+inbox'
+mailboxes -label 'Emacs Devel'            '+Lists/emacs-devel.gnu.org'
+mailboxes -label 'Emacs Bugs'             '+Lists/bug-gnu-emacs.gnu.org'
+mailboxes -label 'Emacs Tangents'         '+Lists/emacs-tangents.gnu.org'
+mailboxes -label 'Misc'                   '+Lists/Misc'
+mailboxes -label 'Emacs Build Automation' '+Lists/emacs-build-automation.gnu.org'
+mailboxes '+Lists/discuss-gnustep.gnu.org'
+
+
+# Hooks
+
+# Always default to saving in archive.
+save-hook . =archive
+
+set mailcap_path             = ~/.config/mutt/mailcap
+
+set index_format  = "%4C %Z  %{%F}  %-15.15L %s"
+set sort          = threads
+set sort_aux      = last-date-received
+set move          = no
+set confirmappend = no
+set delete        = yes
+
+# Disable annoying "+" markers on wrapped lines.
+unset markers
+
+
+# Folder view
+set folder_format = "%2C %t %N %-50.50f %d"
+
+
+# Email address search using notmuch.
+set query_command = "lbdbq %s"
+bind editor <Tab> complete-query
+bind editor ^T complete
+set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
+
+alternative_order text/plain text/enriched text/html # save html for last
+
+# writing email
+set editor = 'emacsclient -t'
+set edit_headers
+set reply_to
+set include
+set fast_reply
+set forward_quote
+set abort_unmodified=no
+
+bind attach <return> view-mailcap
+bind editor <Tab> complete-query
+bind index,pager <Tab> next-unread
+
+macro index G "<enter-command>unset wait\_key<enter><shell-escape>email-sync.sh<enter><enter-command>set wait\_key<enter>" "run isync"
+macro index ,s "<enter-command>unset wait\_key<enter><shell-escape>maildir-search.sh<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "NotMuch Search"
+macro index ,t "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt thread -r -o ~/.cache/Maildir/thread<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/thread<enter>" "Get the whole thread"
+macro index .e "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt tag -- +emacs-followup<enter><enter-command>set wait\_key<enter>" "Tag the email with emacs-followup"
+macro index .E "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt tag -- -emacs-followup<enter><enter-command>set wait\_key<enter>" "Untag the email with emacs-followup"
+macro index ,e "<enter-command>unset wait\_key<enter><shell-escape>notmuch mutt search tag:emacs-followup -r -o ~/.cache/Maildir/search<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "Get all emails marked emacs-followup"
+macro index ,E "<enter-command>unset wait\_key<enter><shell-escape>notmuch mutt search thread:{tag:emacs-followup} -r -o ~/.cache/Maildir/search<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "Get all emails marked emacs-followup"
+
+
+source ~/.config/mutt/muttrc-local
+source ~/.config/mutt/colours
+source ~/.config/mutt/gpg.muttrc
+#set crypt_use_gpgme
