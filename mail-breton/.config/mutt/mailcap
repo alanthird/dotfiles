@@ -1,0 +1,22 @@
+application/msword; view_attachment.sh %s "-" '/Applications/TextEdit.app'
+#
+# # Images
+image/jpg; view_attachment.sh %s jpg
+image/jpeg; view_attachment.sh %s jpg
+image/pjpeg; view_attachment.sh %s jpg
+image/png; view_attachment.sh %s png
+image/gif; view_attachment.sh %s gif
+#
+# # PDFs
+application/pdf; view_attachment.sh %s pdf
+
+#
+# # HTML
+#text/html; view_attachment.sh %s html; copiousoutput
+#text/html; eww %s; nametemplate=%s.html
+text/html; '/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser' --new-window %s; nametemplate=%s.html ; needsterminal
+text/x-org; emacsclient -t %s; nametemplate=%s.org
+text/*; emacsclient -t %s
+#
+# # Unidentified files
+application/octet-stream; view_attachment.sh %s "-"

@@ -1,0 +1,34 @@
+# Example for a user configuration file ~/.msmtprc
+
+# With modern mail services that publish autoconfiguration information,
+# you can simply run 'msmtp --configure yourmail@example.com' to get
+# a basic working configuration.
+
+# This example focusses on TLS and authentication. Features not used here
+# include logging, timeouts, SOCKS proxies, TLS parameters, Delivery Status
+# Notification (DSN) settings, and more.
+
+# Set default values: use the mail submission port 587, and always use TLS.
+# On this port, TLS is activated via STARTTLS.
+defaults
+port 587
+tls on
+tls_starttls on
+
+# Define a mail account at a freemail service
+account idiocy.org
+# Host name of the SMTP server
+host smtp.soverin.net
+# Envelope-from address
+from alan@idiocy.org
+# Authentication
+auth on
+user alan@idiocy.org
+passwordeval bw get password soverin.net --session F1hS2UMsUiUiXRcDtICgn86PIJjSmUk/5MDF2U/aD/Z3n9iqyhPyLUfS7OkqlJtslgEt0l4ZrUsqzWp3wdMRBw==
+
+
+account a3rd.at : idiocy.org
+from alan@a3rd.at
+
+# Set a default account
+account default : idiocy.org

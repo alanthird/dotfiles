@@ -1,7 +1,10 @@
 set from     = 'alan@idiocy.org'
 set realname = 'Alan Third'
 
-alternates ^.+@idiocy.org$ ^athird@g(oogle)?mail.com$ ^alan.third@argyll-bute.gov.uk$ ^athird@mailfence.com$
+alternates ^.+@idiocy.org$ ^.+@a3rd.at$ ^athird@g(oogle)?mail.com$ ^alan.third@argyll-bute.gov.uk$ ^athird@mailfence.com$
+
+set use_envelope_from = yes
+set reverse_name  
 
 
 # Mailing Lists
