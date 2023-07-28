@@ -9,6 +9,9 @@
 # meta key
 #[[ $TERM = "xterm" ]] && bindkey -m
 
+# Emacs Tramp has trouble with the rest of the configuration.
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 # urxvt sets $TERM to something zsh doesn't understand
 if [[ $TERM = "rxvt-unicode" ]]; then
     bindkey "\e[5~" beginning-of-history # PageUp
