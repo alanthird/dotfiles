@@ -6,7 +6,7 @@ case `uname` in
         mbsync -a
         ;;
     "Linux")
-        systemd --user --wait start mbsync.service
+        systemctl --user --wait start mbsync.service
         ;;
     *)
         echo "Unknown OS"
