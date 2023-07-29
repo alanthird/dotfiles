@@ -16,28 +16,28 @@ Path ~/.local/share/Maildir/
 Inbox ~/.local/share/Maildir/inbox
 
 Channel Soverin-inbox
-Master   :Soverin-remote:
-Slave  :Soverin-local:inbox
+Far   :Soverin-remote:
+Near  :Soverin-local:inbox
 
 Channel Soverin-sent
-Master   :Soverin-remote:"Sent"
-Slave  :Soverin-local:sent
+Far   :Soverin-remote:"Sent"
+Near  :Soverin-local:sent
 
 Channel Soverin-trash
-Master   :Soverin-remote:"Trash"
-Slave  :Soverin-local:bin
+Far   :Soverin-remote:"Trash"
+Near  :Soverin-local:bin
 
 Channel Soverin-drafts
-Master   :Soverin-remote:"Drafts"
-Slave  :Soverin-local:drafts
+Far   :Soverin-remote:"Drafts"
+Near  :Soverin-local:drafts
 
 Channel Soverin-spam
-Master   :Soverin-remote:"Spam"
-Slave  :Soverin-local:spam
+Far   :Soverin-remote:"Spam"
+Near  :Soverin-local:spam
 
 Channel Soverin-archive
-Master   :Soverin-remote:"Archive"
-Slave  :Soverin-local:archive
+Far   :Soverin-remote:"Archive"
+Near  :Soverin-local:archive
 
 Group Soverin
 Channel Soverin-inbox
@@ -50,8 +50,8 @@ Channel Soverin-archive
 # Mailing Lists
 
 Channel lists
-Master    :Soverin-remote:
-Slave   :Soverin-local:
+Far    :Soverin-remote:
+Near   :Soverin-local:
 Patterns "Lists/*"
 
 Group lists
