@@ -1,0 +1,10 @@
+[Unit]
+Description=Run notmuch email indexer
+After=mbsync.service
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/notmuch new
+
+[Install]
+RequiredBy=mbsync.service
