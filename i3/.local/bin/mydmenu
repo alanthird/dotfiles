@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+PATH=$PATH:/home/alan/.local/bin:/opt/viber
+
+dmenu_run -b -nf '#888888' -nb '#222222' -sf '#ffffff' -sb '#285577'

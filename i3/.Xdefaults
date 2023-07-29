@@ -1,0 +1,42 @@
+URxvt*termName: rxvt-unicode
+URxvt*background: 0
+URxvt*foreground: 7
+URxvt*font: xft:Droid Sans Mono-12
+URxvt*boldFont: xft:Droid Sans Mono-12:bold
+URxvt*saveLines: 12000
+URxvt*scrollBar: false
+URxvt*scrollstyle: rxvt
+URxvt*perl-ext-common: default,matcher
+URxvt*urlLauncher: x-www-browser
+URxvt*matcher.button: 1
+URxvt*colorUL: 4
+
+URxvt*keysym.Control-Up:      \033[1;5A
+URxvt*keysym.Control-Down:    \033[1;5B
+URxvt*keysym.Control-Left:    \033[1;5D
+URxvt*keysym.Control-Right:   \033[1;5C
+
+! black
+URxvt*color0  : #242424
+URxvt*color8  : #000000
+! red
+URxvt*color1  : #e5786d
+URxvt*color9  : #f5887d
+! green
+URxvt*color2  : #95e454
+URxvt*color10 : #a5f464
+! yellow
+URxvt*color3  : #cae682
+URxvt*color11 : #daf692
+! blue
+URxvt*color4  : #8ac6f2
+URxvt*color12 : #9ad6ff
+! magenta
+URxvt*color5  : #333366
+URxvt*color13 : #434376
+! cyan
+URxvt*color6  : #ccaa8f
+URxvt*color14 : #dcba9f
+! white
+URxvt*color7  : #f6f3e8
+URxvt*color15 : #ffffff
