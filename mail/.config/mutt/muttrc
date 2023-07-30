@@ -88,7 +88,7 @@ bind editor <Tab> complete-query
 bind index,pager <Tab> next-unread
 
 macro index G "<enter-command>unset wait\_key<enter><shell-escape>email-sync.sh<enter><enter-command>set wait\_key<enter>" "run isync"
-macro index ,s "<enter-command>unset wait\_key<enter><shell-escape>maildir-search.sh<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "NotMuch Search"
+macro index ,s "<enter-command>unset wait\_key<enter><shell-escape>notmuch mutt search -r -p -o ~/.cache/Maildir/search<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "NotMuch Search"
 macro index ,t "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt thread -r -o ~/.cache/Maildir/thread<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/thread<enter>" "Get the whole thread"
 macro index .e "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt tag -- +emacs-followup<enter><enter-command>set wait\_key<enter>" "Tag the email with emacs-followup"
 macro index .E "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt tag -- -emacs-followup<enter><enter-command>set wait\_key<enter>" "Untag the email with emacs-followup"
