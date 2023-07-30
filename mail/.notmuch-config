@@ -11,6 +11,7 @@
 # configured here named ".notmuch".
 #
 [database]
+# The maildir location is set by the MAILDIR environment variable
 #path=/home/alan/.local/share/Maildir
 
 # User configuration
