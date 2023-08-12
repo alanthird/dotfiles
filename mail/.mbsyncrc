@@ -3,7 +3,7 @@ Expunge Both
 
 IMAPAccount      Soverin
 Host             imap.soverin.net
-User             alan@idiocy.org
+UserCMD          "bw get username soverin.net"
 PassCMD          "bw get password soverin.net"
 SSLType          IMAPS
 
