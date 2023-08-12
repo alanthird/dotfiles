@@ -91,13 +91,12 @@ precmd() {
     done
 
     # set the xterm title bar
-    # FIXME: Kitty is showing something completely different...
-    [[ -t 1 ]] || print -Pn "\e]2;%n@%m\a"
+    [[ -t 1 ]] && print -Pn "\e]2;%n@%m\a"
 }
 
 # Aliases
-case `uname -s` in
-    "Darwin") alias ls='ls -G $@';;
+case $OSTYPE in
+    darwin*) alias ls='ls -G $@';;
     *) alias ls='ls --color $@';;
 esac
 

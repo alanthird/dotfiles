@@ -9,9 +9,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   if [ -x "/usr/libexec/path_helper" ]; then
     eval $(/usr/libexec/path_helper -s)
   fi
+
+  # Mac Ports directories
+  path=(/opt/local/bin /opt/local/sbin $path)
 fi
 
-path=($path /home/alan/.local/bin /home/alan/.local/share/gem/ruby/3.0.0/bin)
+# go directories
+GOPATH=${HOME}/src/go
+
+path=(${HOME}/.local/bin
+      $path
+      ${GOPATH}/bin
+      ${HOME}/.local/share/gem/ruby/3.0.0/bin)
 
 export EMAIL="alan@idiocy.org"
 export NAME="Alan Third"
