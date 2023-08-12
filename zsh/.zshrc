@@ -18,6 +18,11 @@ if [[ $TERM = "rxvt-unicode" ]]; then
     bindkey "\e[Z"  reverse-menu-complete # Shift+Tab
     bindkey "\e[7~" beginning-of-line # Home
     bindkey "\e[8~" end-of-line # End
+elif [[ $TERM = "xterm"* ]]; then
+    bindkey "\e[1;3D" backward-word
+    bindkey "\e[1;5D" backward-word
+    bindkey "\e[1;3C" forward-word
+    bindkey "\e[1;5C" forward-word
 fi
 
 # prompt
@@ -48,8 +53,9 @@ setopt AUTO_MENU
 setopt HIST_IGNORE_DUPS
 setopt EXTENDED_GLOB
 
-# Remove '/' from WORDCHARS so delete word, etc. work as I expect.
-WORDCHARS=${WORDCHARS/\/}
+# Remove '/', '-' and '.' from WORDCHARS so delete word, etc. work as
+# I expect.
+WORDCHARS='*?_[]~=&;!#$%^(){}<>'
 
 # try to use the GPG agent if available
 unset SSH_AGENT_PID
@@ -85,6 +91,7 @@ precmd() {
     done
 
     # set the xterm title bar
+    # FIXME: Kitty is showing something completely different...
     [[ -t 1 ]] || print -Pn "\e]2;%n@%m\a"
 }
 
@@ -94,7 +101,22 @@ case `uname -s` in
     *) alias ls='ls --color $@';;
 esac
 
+# Turn on zmv.
 autoload zmv
+
+# Use C-xC-e to open the current command line in EDITOR.
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '\Cx\Ce' edit-command-line
+
+# Copy the Emacs open-line command. It's not very different from just
+# using M-return, but it leaves the cursor in the same place as Emacs.
+function emacs-open-line () {
+  BUFFER="${LBUFFER}
+${RBUFFER}"
+}
+zle -N emacs-open-line
+bindkey '\Co' emacs-open-line
 
 # include any local configuration
 [ -f ~/.zshrc-local ] && . ~/.zshrc-local
