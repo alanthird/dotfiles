@@ -26,7 +26,7 @@ if [ -t 1 ]; then
     PROMPTCOLOURS=(blue yellow magenta red cyan)
     PROMPTCOLOUR=${PROMPTCOLOURS[$((1 + (36#${HOST[1]} % ${#PROMPTCOLOURS})))]}
 
-    PS1="%F{${PROMPTCOLOUR}}%m%f:%/%(\!. #.>)"
+    PS1="%F{${PROMPTCOLOUR}}%m%f:%/%(!. #.>)"
 else
     PS1='%m:%/%(!. #.>)'
 fi
