@@ -16,10 +16,12 @@ path=($path /home/alan/.local/bin /home/alan/.local/share/gem/ruby/3.0.0/bin)
 export EMAIL="alan@idiocy.org"
 export NAME="Alan Third"
 
-if [ -n "$(which emacsclient)" ]; then
-   export EDITOR='emacsclient -t -a emacs'
-else
-   export EDITOR='zile'
+# Find my preferred editor.
+export EDITOR=${(f)$(whence emacsclient zile mg vi)[1]}
+
+# If it's emacsclient, set up it's arguments.
+if [[ "$EDITOR" = *emacsclient ]]; then
+    export EDITOR="$EDITOR -t -a emacs"
 fi
 
 export VISUAL=$EDITOR
