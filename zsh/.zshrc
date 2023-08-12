@@ -6,9 +6,6 @@
 #
 # Global Order: zshenv, zprofile, zshrc, zlogin
 
-# meta key
-#[[ $TERM = "xterm" ]] && bindkey -m
-
 # Emacs Tramp has trouble with the rest of the configuration.
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
@@ -25,20 +22,14 @@ fi
 
 # prompt
 
-case `hostname` in
-    colt) PROMPTCOLOUR=4;;
-    warhorse) PROMPTCOLOUR=3;;
-    galloway*) PROMPTCOLOUR=5;;
-    faroe) PROMPTCOLOUR=4;;
-    *) PROMPTCOLOUR=1;;
-esac
+if [ -t 1 ]; then
+    PROMPTCOLOURS=(blue yellow magenta red cyan)
+    PROMPTCOLOUR=${PROMPTCOLOURS[$((1 + (36#${HOST[1]} % ${#PROMPTCOLOURS})))]}
 
-#PS1='%m:%/>'
-PS1=$'%{\e[3'${PROMPTCOLOUR}$';1m%}%m%{\e[0;29m%}:%/>'
-[[ $TERM == "vt420" ]] && PS1=$'\e[32;1m%m\e[0;29m:%/>'
-#[[ $UID == 0 ]] && PS1='%m:%/ # '
-[[ $UID == 0 ]] && PS1=$'%{\e[32;1m%}%m%{\e[0;29m%}:%/ # '
-[[ $TERM == "vt420" && $UID == 0 ]] && PS1=$'\e[32;1m%m\e[0;29m:%/ # '
+    PS1="%F{${PROMPTCOLOUR}}%m%f:%/%(\!. #.>)"
+else
+    PS1='%m:%/%(!. #.>)'
+fi
 
 # History
 
@@ -80,29 +71,21 @@ fi
 
 # Precmd, executed before every prompt
 precmd() {
-	# add any hostnames from the last command to the 
-	# hostname completion array
-	lastargs=(`fc -ln -1`)
+    # add any hostnames from the last command to the
+    # hostname completion array
+    lastargs=(`fc -ln -1`)
 
-	for stuff in $lastargs
-	do
-		if [[ $stuff == (*.org||*.com||*.net||*.edu||*.??~*.[[:digit:]][[:digit:]]) || `iplegal $stuff` == legal ]]
-		then
-			hosts=($hosts $stuff)
-			zstyle ':completion:*:hosts' hosts $hosts
-		fi
-	done
+    for stuff in $lastargs
+    do
+	if [[ $stuff == (*.org||*.com||*.net||*.edu||*.??~*.[[:digit:]][[:digit:]]) || `iplegal $stuff` == legal ]]
+	then
+	    hosts=($hosts $stuff)
+	    zstyle ':completion:*:hosts' hosts $hosts
+	fi
+    done
 
-	# set the xterm title bar
-	[[ -t 1 ]] || return
-	case $TERM in
-			sun-cmd) print -Pn "\e]l%~\e\\"
-				;;
-		*xterm*|rxvt*|(dt|k|E)term) print -Pn "\e]2;%n@%m\a"
-			;;
-	vt420) print -Pn "\e]2;%n@%m\a"
-			;;
-	esac
+    # set the xterm title bar
+    [[ -t 1 ]] || print -Pn "\e]2;%n@%m\a"
 }
 
 # Aliases
@@ -110,6 +93,8 @@ case `uname -s` in
     "Darwin") alias ls='ls -G $@';;
     *) alias ls='ls --color $@';;
 esac
+
+autoload zmv
 
 # include any local configuration
 [ -f ~/.zshrc-local ] && . ~/.zshrc-local
