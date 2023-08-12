@@ -26,5 +26,3 @@ fi
 
 export VISUAL=$EDITOR
 export MAILREADER='/usr/bin/mutt'
-
-#skip_global_compinit=1
