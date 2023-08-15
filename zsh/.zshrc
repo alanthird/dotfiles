@@ -96,8 +96,13 @@ precmd() {
 
 # Aliases
 case $OSTYPE in
-    darwin*) alias ls='ls -G $@';;
-    *) alias ls='ls --color $@';;
+    darwin*)
+        alias ls='ls -G $@'
+        ;;
+    *)
+        alias ls='ls --color $@'
+        alias bw='bw --session ${(S)$(systemctl --user show-environment | grep \^BW_SESSION=)/*=}'
+        ;;
 esac
 
 # Turn on zmv.
