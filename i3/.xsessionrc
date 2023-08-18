@@ -1,3 +1,9 @@
+# Load .Xresources
+xrdb ~/.Xresources
+if [ -f ~/.Xresources.`hostname` ]; then
+  xrdb ~/.Xresources.`hostname`
+fi
+
 # Compton, used with i3, prevents xsetroot from setting the
 # background, so try hsetroot too.
 xsetroot -solid "#333333" &
@@ -14,15 +20,11 @@ devmon --exec-on-drive "notify-send --icon=block-device --urgency=low 'Volume %l
 killall dunst
 dunst &
 
+urxvtd &
+
 (sleep 15 ; blueman-applet) &
 nm-applet &
 kdeconnect-indicator &
-
-# Load .Xresources
-xrdb ~/.Xresources
-if [ -f ~/.Xresources.`hostname` ]; then
-  xrdb ~/.Xresources.`hostname`
-fi
 
 if [ $HOST = "faroe" ]; then
    # The ThinkPad bell is deafening
