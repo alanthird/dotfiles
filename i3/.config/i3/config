@@ -18,15 +18,12 @@ set $mod Mod4
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:Anonymous Pro 11
+font pango:IBM Plex Mono, Anonymous Pro, Fixed 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 focus_follows_mouse no
-
-#exec compton --backend glx --unredir-if-possible --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method buffer-age --vsync opengl-swc --sw-opti
-exec picom --backend glx --unredir-if-possible --glx-no-stencil --glx-no-rebind-pixmap --use-damage --vsync
 
 for_window [class="Emacs"] border none
 for_window [instance="brave-browser" class="Brave-browser"] border none
@@ -198,3 +195,5 @@ bar {
         position top
         status_command i3status
 }
+
+include `hostname`.conf
