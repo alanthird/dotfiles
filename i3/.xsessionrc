@@ -3,21 +3,13 @@
 xsetroot -solid "#333333" &
 hsetroot -solid "#333333" &
 
-# The ThinkPad bell is deafening
-xset -b
-
 # Set the screensaver
 xset s on
 xset s 600
 xss-lock -- i3lock -c B3C7D6 &
 
-# Load .Xresources
-xrdb ~/.Xresources
-
 killall devmon
 devmon --exec-on-drive "notify-send --icon=block-device --urgency=low 'Volume %l has been mounted on %d'" --exec-on-remove "notify-send --icon=block-device --urgency=low 'Volume has been removed'" --exec-on-unmount "notify-send --icon=block-device --urgency=low 'Volume has been unmounted'" &
-
-autorandr -c -d mobile &
 
 killall dunst
 dunst &
@@ -25,3 +17,15 @@ dunst &
 (sleep 15 ; blueman-applet) &
 nm-applet &
 kdeconnect-indicator &
+
+# Load .Xresources
+xrdb ~/.Xresources
+if [ -f ~/.Xresources.`hostname` ]; then
+  xrdb ~/.Xresources.`hostname`
+fi
+
+if [ $HOST = "faroe" ]; then
+   # The ThinkPad bell is deafening
+   xset -b
+   autorandr -c -d mobile &
+fi

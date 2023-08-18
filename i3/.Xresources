@@ -9,13 +9,8 @@ URxvt*urlLauncher: x-www-browser
 URxvt*matcher.button: 1
 URxvt*colorUL: 4
 
-#if HOST == shetland
-URxvt*font: xft:IBM Plex Mono-11:Light
-URxvt*boldFont: xft:IBM Plex Mono-11:Regular
-#else
 URxvt*font: xft:IBM Plex Mono-12:Light
 URxvt*boldFont: xft:IBM Plex Mono-12:Regular
-#endif
 
 URxvt*keysym.Control-Up:      \033[1;5A
 URxvt*keysym.Control-Down:    \033[1;5B
