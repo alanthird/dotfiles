@@ -11,13 +11,17 @@
 
 # urxvt sets $TERM to something zsh doesn't understand
 if [[ $TERM = "rxvt-unicode" ]]; then
-    bindkey "\e[5~" beginning-of-history # PageUp
-    bindkey "\e[6~" end-of-history # PageDown
-    bindkey "\e[2~" quoted-insert # Ins
-    bindkey "\e[3~" delete-char # Del
+    bindkey "\e[5~" beginning-of-history  # PageUp
+    bindkey "\e[6~" end-of-history        # PageDown
+    bindkey "\e[2~" quoted-insert         # Ins
+    bindkey "\e[3~" delete-char           # Del
     bindkey "\e[Z"  reverse-menu-complete # Shift+Tab
-    bindkey "\e[7~" beginning-of-line # Home
-    bindkey "\e[8~" end-of-line # End
+    bindkey "\e[7~" beginning-of-line     # Home
+    bindkey "\e[8~" end-of-line           # End
+    bindkey "\e\e[D" backward-word        # alt-left
+    bindkey "\e[1;5D" backward-word       # C-left
+    bindkey "\e\e[C" forward-word         # alt-right
+    bindkey "\e[1;5C" forward-word        # C-right
 elif [[ $TERM = "xterm"* ]]; then
     bindkey "\e[1;3D" backward-word
     bindkey "\e[1;5D" backward-word
