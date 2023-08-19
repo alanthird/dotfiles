@@ -9,35 +9,37 @@ URxvt*urlLauncher: x-www-browser
 URxvt*matcher.button: 1
 URxvt*colorUL: 4
 
-URxvt*font: xft:IBM Plex Mono-12:Light
-URxvt*boldFont: xft:IBM Plex Mono-12:Regular
+URxvt*font: xft:IBM Plex Mono-12:Light, xft:EmojiSymbols, xft:Symbola
 
 URxvt*keysym.Control-Up:      \033[1;5A
 URxvt*keysym.Control-Down:    \033[1;5B
 URxvt*keysym.Control-Left:    \033[1;5D
 URxvt*keysym.Control-Right:   \033[1;5C
 
+! orange cursor
+URxvt*cursorColor: #f29112
+
 ! black
-URxvt*color0  : #242424
-URxvt*color8  : #000000
+URxvt*color0:      #242424
+URxvt*color8:      #444444
 ! red
-URxvt*color1  : #e5786d
-URxvt*color9  : #f5887d
+URxvt*color1:      #b85149
+URxvt*color9:      #e5786d
 ! green
-URxvt*color2  : #95e454
-URxvt*color10 : #a5f464
+URxvt*color2:      #92a65e
+URxvt*color10:     #95e454
 ! yellow
-URxvt*color3  : #cae682
-URxvt*color11 : #daf692
+URxvt*color3:      #ccaa8f
+URxvt*color11:     #edc4a3
 ! blue
-URxvt*color4  : #8ac6f2
-URxvt*color12 : #9ad6ff
+URxvt*color4:      #5b98c2
+URxvt*color12:     #8ac6f2
 ! magenta
-URxvt*color5  : #333366
-URxvt*color13 : #434376
+URxvt*color5:      #64619a
+URxvt*color13:     #a6a1de
 ! cyan
-URxvt*color6  : #ccaa8f
-URxvt*color14 : #dcba9f
+URxvt*color6:      #3f9f9e
+URxvt*color14:     #70cecc
 ! white
-URxvt*color7  : #f6f3e8
-URxvt*color15 : #ffffff
+URxvt*color7:      #f6f3e8
+URxvt*color15:     #ffffff

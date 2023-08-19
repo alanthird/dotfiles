@@ -1,7 +1,7 @@
 # Load .Xresources
 xrdb ~/.Xresources
 if [ -f ~/.Xresources.`hostname` ]; then
-  xrdb ~/.Xresources.`hostname`
+  xrdb -merge ~/.Xresources.`hostname`
 fi
 
 # Compton, used with i3, prevents xsetroot from setting the
@@ -19,8 +19,6 @@ devmon --exec-on-drive "notify-send --icon=block-device --urgency=low 'Volume %l
 
 killall dunst
 dunst &
-
-urxvtd &
 
 (sleep 15 ; blueman-applet) &
 nm-applet &

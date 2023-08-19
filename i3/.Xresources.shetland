@@ -1,2 +1,1 @@
-URxvt*font: xft:IBM Plex Mono-11:Light
-URxvt*boldFont: xft:IBM Plex Mono-11:Regular
+URxvt*font: xft:IBM Plex Mono-11:Light, xft:EmojiSymbols, xft:Symbola
