@@ -3,8 +3,8 @@ Expunge Both
 
 IMAPAccount      Soverin
 Host             imap.soverin.net
-UserCMD          "bw get username soverin.net"
-PassCMD          "bw get password soverin.net"
+UserCMD          "ask-netrc login smtp.soverin.net"
+PassCMD          "ask-netrc password smtp.soverin.net"
 SSLType          IMAPS
 
 IMAPStore  Soverin-remote

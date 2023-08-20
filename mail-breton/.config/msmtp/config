@@ -24,7 +24,7 @@ from alan@idiocy.org
 # Authentication
 auth on
 user alan@idiocy.org
-passwordeval bw get password soverin.net --session F1hS2UMsUiUiXRcDtICgn86PIJjSmUk/5MDF2U/aD/Z3n9iqyhPyLUfS7OkqlJtslgEt0l4ZrUsqzWp3wdMRBw==
+passwordeval ask-netrc password smtp.soverin.net
 
 
 account a3rd.at : idiocy.org

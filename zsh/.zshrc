@@ -105,7 +105,6 @@ case $OSTYPE in
         ;;
     *)
         alias ls='ls --color $@'
-        alias bw='bw --session ${(S)$(systemctl --user show-environment | grep \^BW_SESSION=)/*=}'
         ;;
 esac
 
