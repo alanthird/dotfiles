@@ -24,11 +24,20 @@ esac
 
 sed ${SEDFLAGS} '
     /^machine[[:space:]]+'${SERVER}'/,$ {
+
+      # Quit if we hit a non-matching "machine" line.
+      /^machine[[:space:]]+/ {
+        /'${SERVER}'/ !q
+      }
+
+      # Print an unquoted match then quit.
       /'${SEARCH}'[[:space:]][^"]/ {
         s/^.*'${SEARCH}'[[:space:]]+([^[:space:]]+).*$/\1/
         p
         q
       }
+
+      # Print a quoted match then quit.
       /'${SEARCH}'[[:space:]]"/ {
         s/^.*'${SEARCH}'[[:space:]]+"(([^"\\]|\\.)*)".*$/\1/
         s/\\(.)/\1/g
