@@ -2,7 +2,7 @@
 Description=imapnotify service
 
 [Service]
-ExecStart=/usr/local/bin/imapnotify -c /home/alan/.config/imap_notify/config.js
+ExecStart=/usr/local/bin/imapnotify -c %h/.config/imap_notify/config.js
 Restart=always
 RestartSec=30
 
