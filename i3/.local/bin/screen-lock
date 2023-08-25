@@ -10,10 +10,10 @@ SIZE=$(xrandr | sed -nr 's/^\s+([0-9]+x[0-9]+)\s+.*\*.*$/\1/ p')
 WIDTH=${SIZE/x*/}
 HEIGHT=${SIZE/*x/}
 
-convert ${IMAGE}\[${SIZE}\]                                    \
+convert ${IMAGE}\[${WIDTH}x]                                                       \
         -background black -gravity center                                          \
         -extent ${SIZE}                                                            \
-        -modulate 50,0,0 -fill ${COLOUR} -tint 100%                               \
+        -modulate 50,0,0 -fill ${COLOUR} -tint 100%                                \
         -fill white -font "Futura-Bold" -weight "Bold" -pointsize $((HEIGHT/4))    \
         -gravity northwest -draw "text $((WIDTH/10)),$((HEIGHT/10)) '$(hostname)'" \
         RGB:- | exec i3lock -n --raw=${SIZE}:rgb --image=/dev/stdin
