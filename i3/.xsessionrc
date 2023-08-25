@@ -12,7 +12,7 @@ hsetroot -solid "#333333" &
 # Set the screensaver
 xset s on
 xset s 600
-xss-lock -- i3lock -c B3C7D6 &
+xss-lock -- ~/.local/bin/screen-lock &
 
 killall devmon
 devmon --exec-on-drive "notify-send --icon=block-device --urgency=low 'Volume %l has been mounted on %d'" --exec-on-remove "notify-send --icon=block-device --urgency=low 'Volume has been removed'" --exec-on-unmount "notify-send --icon=block-device --urgency=low 'Volume has been unmounted'" &
