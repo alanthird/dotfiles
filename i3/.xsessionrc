@@ -1,3 +1,5 @@
+~/.local/bin/screen-lock
+
 # Load .Xresources
 xrdb ~/.Xresources
 
