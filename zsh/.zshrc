@@ -61,10 +61,6 @@ setopt EXTENDED_GLOB
 # I expect.
 WORDCHARS='*?_[]~=&;!#$%^(){}<>'
 
-# try to use the GPG agent if available
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
-
 # set up some hosts for hostname completion out of the
 # ~/.zhosts file if it exists
 [[ -a $HOME/.zhosts ]] && hosts=(${(f)"$(<$HOME/.zhosts)"})

@@ -17,6 +17,9 @@ xss-lock -- ~/.local/bin/screen-lock &
 killall devmon
 devmon --exec-on-drive "notify-send --icon=block-device --urgency=low 'Volume %l has been mounted on %d'" --exec-on-remove "notify-send --icon=block-device --urgency=low 'Volume has been removed'" --exec-on-unmount "notify-send --icon=block-device --urgency=low 'Volume has been unmounted'" &
 
+killall ssh-agent
+eval `ssh-agent`
+
 killall dunst
 dunst &
 
