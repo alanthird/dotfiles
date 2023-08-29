@@ -1,4 +1,3 @@
-URxvt*termName: rxvt-unicode
 URxvt*background: 0
 URxvt*foreground: 7
 URxvt*saveLines: 12000
