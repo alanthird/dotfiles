@@ -12,11 +12,6 @@ URxvt*pointerBlankDelay: 1000000
 
 URxvt*font: xft:IBM Plex Mono-12:Light, xft:EmojiSymbols, xft:Symbola
 
-URxvt*keysym.Control-Up:      \033[1;5A
-URxvt*keysym.Control-Down:    \033[1;5B
-URxvt*keysym.Control-Left:    \033[1;5D
-URxvt*keysym.Control-Right:   \033[1;5C
-
 ! orange cursor
 URxvt*cursorColor: #f29112
 

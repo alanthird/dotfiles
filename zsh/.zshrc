@@ -9,26 +9,6 @@
 # Emacs Tramp has trouble with the rest of the configuration.
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
-# urxvt sets $TERM to something zsh doesn't understand
-if [[ $TERM = "rxvt-unicode" ]]; then
-    bindkey "\e[5~" beginning-of-history  # PageUp
-    bindkey "\e[6~" end-of-history        # PageDown
-    bindkey "\e[2~" quoted-insert         # Ins
-    bindkey "\e[3~" delete-char           # Del
-    bindkey "\e[Z"  reverse-menu-complete # Shift+Tab
-    bindkey "\e[7~" beginning-of-line     # Home
-    bindkey "\e[8~" end-of-line           # End
-    bindkey "\e\e[D" backward-word        # alt-left
-    bindkey "\e[1;5D" backward-word       # C-left
-    bindkey "\e\e[C" forward-word         # alt-right
-    bindkey "\e[1;5C" forward-word        # C-right
-elif [[ $TERM = "xterm"* ]]; then
-    bindkey "\e[1;3D" backward-word
-    bindkey "\e[1;5D" backward-word
-    bindkey "\e[1;3C" forward-word
-    bindkey "\e[1;5C" forward-word
-fi
-
 # prompt
 
 if [ -t 1 ]; then
@@ -120,6 +100,23 @@ ${RBUFFER}"
 }
 zle -N emacs-open-line
 bindkey '\Co' emacs-open-line
+
+# Key setup
+if [[ $TERM = "rxvt"* ]]; then
+    bindkey "\e\e[D" emacs-backward-word        # alt-left
+    bindkey "\eOd" emacs-backward-word          # C-left
+    bindkey "\e\e[C" emacs-forward-word         # alt-right
+    bindkey "\eOc" emacs-forward-word           # C-right
+elif [[ $TERM = "xterm"* ]]; then
+    bindkey "\e[1;3D" emacs-backward-word
+    bindkey "\e[1;5D" emacs-backward-word
+    bindkey "\e[1;3C" emacs-forward-word
+    bindkey "\e[1;5C" emacs-forward-word
+fi
+
+bindkey "$terminfo[kpp]" beginning-of-history    # PageUp
+bindkey "$terminfo[knp]" end-of-history          # PageDown
+bindkey "$terminfo[kcbt]"  reverse-menu-complete # Shift+Tab
 
 # include any local configuration
 [ -f ~/.zshrc-local ] && . ~/.zshrc-local
