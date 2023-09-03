@@ -1,8 +1,5 @@
 # Load .Xresources
 xrdb ~/.Xresources
-if [ -f ~/.Xresources.`hostname` ]; then
-  xrdb -merge ~/.Xresources.`hostname`
-fi
 
 # Compton, used with i3, prevents xsetroot from setting the
 # background, so try hsetroot too.
