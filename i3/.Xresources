@@ -10,32 +10,32 @@ URxvt*colorUL: 4
 URxvt*pointerBlank: true
 URxvt*pointerBlankDelay: 1000000
 
-URxvt*font: xft:IBM Plex Mono-12:Light, xft:EmojiSymbols, xft:Symbola
+URxvt*font: xft:IBM Plex Mono:style=light:size=10, xft:EmojiSymbols, xft:Symbola
 
 ! orange cursor
 URxvt*cursorColor: #f29112
 
 ! black
-URxvt*color0:      #242424
-URxvt*color8:      #444444
+*color0:      #242424
+*color8:      #444444
 ! red
-URxvt*color1:      #b85149
-URxvt*color9:      #e5786d
+*color1:      #b85149
+*color9:      #e5786d
 ! green
-URxvt*color2:      #92a65e
-URxvt*color10:     #95e454
+*color2:      #92a65e
+*color10:     #95e454
 ! yellow
-URxvt*color3:      #ccaa8f
-URxvt*color11:     #edc4a3
+*color3:      #ccaa8f
+*color11:     #edc4a3
 ! blue
-URxvt*color4:      #5b98c2
-URxvt*color12:     #8ac6f2
+*color4:      #5b98c2
+*color12:     #8ac6f2
 ! magenta
-URxvt*color5:      #64619a
-URxvt*color13:     #a6a1de
+*color5:      #64619a
+*color13:     #a6a1de
 ! cyan
-URxvt*color6:      #3f9f9e
-URxvt*color14:     #70cecc
+*color6:      #3f9f9e
+*color14:     #70cecc
 ! white
-URxvt*color7:      #f6f3e8
-URxvt*color15:     #ffffff
+*color7:      #f6f3e8
+*color15:     #ffffff
