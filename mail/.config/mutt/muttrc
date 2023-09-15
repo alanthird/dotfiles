@@ -51,6 +51,9 @@ save-hook . =archive
 
 set mailcap_path             = ~/.config/mutt/mailcap
 
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+
 set index_format  = "%4C %Z  %{%F}  %-15.15L %s"
 set sort          = threads
 set sort_aux      = last-date-received
