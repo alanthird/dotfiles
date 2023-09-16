@@ -10,7 +10,7 @@ URxvt*colorUL: 4
 URxvt*pointerBlank: true
 URxvt*pointerBlankDelay: 1000000
 
-URxvt*font: xft:IBM Plex Mono:style=light:size=10, xft:EmojiSymbols, xft:Symbola
+URxvt*font: xft:IBM Plex Mono:style=light:size=9, xft:EmojiSymbols, xft:Symbola
 
 ! orange cursor
 URxvt*cursorColor: #f29112
