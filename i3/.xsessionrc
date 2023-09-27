@@ -26,8 +26,9 @@ dunst &
 nm-applet &
 kdeconnect-indicator &
 
-if [ $HOST = "faroe" ]; then
-   # The ThinkPad bell is deafening
-   xset -b
+# Disable the bell.
+xset -b
+
+if [ $(hostname) = "faroe" ]; then
    autorandr -c -d mobile &
 fi
