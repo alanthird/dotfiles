@@ -1,0 +1,3 @@
+MODULES_PATH="/usr/lib/lbdb $HOME/.lbdb/modules"
+METHODS="m_vcf m_notmuch"
+VCF_FILES="$HOME/.lbdb/soverin.vcf"

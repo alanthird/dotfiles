@@ -5,3 +5,4 @@ text/x-org; emacsclient -t %s; nametemplate=%s.org
 text/*; emacsclient -t %s
 application/*; xdg-open %s
 image/*; qimgv %s ; needsterminal
+text/patch; patchview; copiousoutput;

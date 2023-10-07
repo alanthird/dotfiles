@@ -1,0 +1,32 @@
+#!/usr/bin/bash -posix
+
+# -*-sh-mode-*-
+
+#     Copyright (C)  2018 Emanuele Di Giacomo <emanuele@digiacomo.cc>
+#
+#     This program is free software; you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation; either version 2 of the License, or
+#     (at your option) any later version.
+#
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software Foundation,
+#     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,, USA.
+
+m_notmuch_query()
+{
+    NOTMUCH="$(which notmuch 2>/dev/null)" || return 1
+    NOTMUCH="$NOTMUCH address"
+
+    # notmuch requires at least one search term
+    test -z "$*" && return 0
+
+    # Limit to last three years, otherwise the results list can be
+    # full of billions of ancient nonsense.
+    $NOTMUCH --output=sender --output=recipients --format=json "date:3years.." "to:$*" "from:$*" | jq -r '.[] | select(any(test("'"$*"'"; "i"))) | [.address, .name, ."name-addr"] | join("\t")'
+}

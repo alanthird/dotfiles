@@ -1,0 +1,11 @@
+# Find all emails related to this bug report.
+macro index <F5> "<enter-command>unset wait\_key<enter><pipe-message>get-debbugs-bug<enter><enter-command>set wait\_key<enter><change-folder>~/.cache/debbugs.mbox<enter>" "Get GNU debbugs bug mbox"
+
+# .e: Tag with emacs-followup
+# .E: Untag
+# ,e: Find all emails tagged emacs-followup
+# ,E: Find all threads containing emails marked for followup
+macro index .e "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt tag -- +emacs-followup<enter><enter-command>set wait\_key<enter>" "Tag the email with emacs-followup"
+macro index .E "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt tag -- -emacs-followup<enter><enter-command>set wait\_key<enter>" "Untag the email with emacs-followup"
+macro index ,e "<enter-command>unset wait\_key<enter><shell-escape>notmuch mutt search tag:emacs-followup -r -o ~/.cache/Maildir/search<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "Get all emails marked emacs-followup"
+macro index ,E "<enter-command>unset wait\_key<enter><shell-escape>notmuch mutt search thread:{tag:emacs-followup} -r -o ~/.cache/Maildir/search<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "Get all emails marked emacs-followup"

@@ -52,7 +52,8 @@ save-hook . =archive
 set mailcap_path             = ~/.config/mutt/mailcap
 
 alternative_order text/plain text/enriched text/html
-auto_view text/html
+auto_view text/html text/patch
+set allow_ansi = yes
 
 set index_format  = "%4C %Z  %{%F}  %-15.15L %s"
 set sort          = threads
@@ -68,15 +69,6 @@ unset markers
 # Folder view
 set folder_format = "%2C %t %N %-50.50f %d"
 
-
-# Email address search using notmuch.
-set query_command = "lbdbq %s"
-bind editor <Tab> complete-query
-bind editor ^T complete
-set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
-
-alternative_order text/plain text/enriched text/html # save html for last
-
 # writing email
 set editor = 'emacsclient -t'
 set edit_headers
@@ -91,15 +83,10 @@ bind editor <Tab> complete-query
 bind index,pager <Tab> next-unread
 
 macro index G "<enter-command>unset wait\_key<enter><shell-escape>email-sync.sh<enter><enter-command>set wait\_key<enter>" "run isync"
-macro index ,s "<enter-command>unset wait\_key<enter><shell-escape>notmuch mutt search -r -p -o ~/.cache/Maildir/search<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "NotMuch Search"
-macro index ,t "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt thread -r -o ~/.cache/Maildir/thread<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/thread<enter>" "Get the whole thread"
-macro index .e "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt tag -- +emacs-followup<enter><enter-command>set wait\_key<enter>" "Tag the email with emacs-followup"
-macro index .E "<enter-command>unset wait\_key<enter><pipe-message>notmuch mutt tag -- -emacs-followup<enter><enter-command>set wait\_key<enter>" "Untag the email with emacs-followup"
-macro index ,e "<enter-command>unset wait\_key<enter><shell-escape>notmuch mutt search tag:emacs-followup -r -o ~/.cache/Maildir/search<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "Get all emails marked emacs-followup"
-macro index ,E "<enter-command>unset wait\_key<enter><shell-escape>notmuch mutt search thread:{tag:emacs-followup} -r -o ~/.cache/Maildir/search<enter><enter-command>set wait\_key<enter><change-folder-readonly>~/.cache/Maildir/search<enter>" "Get all emails marked emacs-followup"
-
 
 source ~/.config/mutt/muttrc-local
 source ~/.config/mutt/colours
 source ~/.config/mutt/gpg.muttrc
+source ~/.config/mutt/emacs.rc
+source ~/.config/mutt/notmuch.rc
 #set crypt_use_gpgme
