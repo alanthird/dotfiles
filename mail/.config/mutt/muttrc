@@ -24,7 +24,7 @@ set imap_user  = $my_user
 set imap_pass  = $my_pass
 set imap_idle  = yes
 
-
+set header_cache = "~/.cache/mutt/"
 
 # Local mailing list archives
 set mbox_type = Maildir
