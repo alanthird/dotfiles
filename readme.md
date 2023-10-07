@@ -14,3 +14,10 @@ sudo update-alternatives                                    \
 
 sudo update-alternatives --set x-terminal-emulator $(whence urxvtcd)
 ```
+
+## Mutt on the Mac
+
+```
+sudo port install mutt +db4
+mkdir -p ~/.cache/mutt
+```
