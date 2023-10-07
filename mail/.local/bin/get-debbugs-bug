@@ -3,7 +3,7 @@
 MBOX="$HOME/.cache/debbugs.mbox"
 URL="https://debbugs.gnu.org/cgi/bugreport.cgi?bug=%s&mbox=yes"
 
-BUGNO=$(sed -n 's/^Subject: .*\(B\|b\)ug *#\([0-9]*\).*$/\2/ p ; /^$/ q')
+BUGNO=$(sed -En 's/^Subject: .*(B|b)ug *#([0-9]*).*$/\2/ p ; /^$/ q')
 
 if [[ -z "$BUGNO" ]]; then
     echo "No bug number found!"
