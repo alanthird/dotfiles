@@ -28,6 +28,7 @@ focus_follows_mouse no
 for_window [class="Emacs"] border none
 for_window [instance="brave-browser" class="Brave-browser"] border none
 for_window [instance="Navigator" class="Firefox-esr"] border none
+for_window [instance="Navigator" class="firefox"] border none
 
 exec --no-startup-id i3-msg 'workspace 3; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace 2; exec /home/alan/.local/bin/emacs'
